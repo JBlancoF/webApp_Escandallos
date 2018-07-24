@@ -1,0 +1,53 @@
+.wholeForm{
+    width: 500px;
+    height: 530px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    margin: 90px auto;
+    border-radius: 5px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.columsForm{
+    border: 1px solid black;
+    width: 100%;
+}
+
+.infoForm{
+    text-align: center;
+    padding: 20px 20px;
+    h1{
+        margin-bottom: 10px;
+    }
+    h4{
+        margin-bottom: 90px; 
+    }
+    p{
+        font-style: italic;
+        margin-bottom: 20px; 
+    }
+    button{
+        border: 2px white solid;
+        background: transparent;
+        color: white;
+        padding: 10px 30px;
+        margin: 10px !important;
+    }
+}
+
+.signUpForm{
+    padding: 20px 40px;
+    background: white;
+    button{
+        margin-top: 30px;
+        background: blue;
+        color: white;
+    }
+}
+
+.splitter{
+    margin-top: 70px;
+    border-bottom: 2px solid gray;
+    box-shadow: 0 4px 6px -6px #222;
+}

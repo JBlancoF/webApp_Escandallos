@@ -1,0 +1,255 @@
+<div class="main-panel">
+  <nav class="navbar navbar-transparent navbar-absolute">
+    <div class="container-fluid ">
+      <div class="navbar-header">
+        <a class="navbar-brand title-header"> ESCANDALLOS </a>
+      </div>
+      <div class="collapse navbar-collapse nav1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <button type="button" class="btn-listing-up">
+              Export
+              <span class="caret"></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="btn-listing-up">
+              Import
+              <span class="caret"></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="btn-listing-up">
+              Print
+              <span class="caret"></span>
+            </button>
+          </li>
+
+          <li>
+            <a [routerLink]="['/main','escandallos-list']" type="button" class="btn btn-primary btn-header-top">
+              Volver a Lista de Escandallos
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="content">
+    <div class=" container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="card card-size">
+            <div class="card-header card-header-size" data-background-color="purple">
+              <h4 class="title">NUEVO ESCANDALLOS</h4>
+              <p class="category">Rellena los siguientes campos</p>
+            </div>
+            <div class="col-md-12 form-margin ingForm-padding">
+              <form class="form-horizontal" role="form">
+
+                <div class="form-group">
+                  <label class="col-sm-2 controlS-label text-left" for="textinput">CODIGO</label>
+                  <div class="col-sm-9 line-width">
+                    <p class="form-control">{{datosCabecera?.code}}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 controlS-label text-left" for="textinput">NOMBRE</label>
+                  <div class="col-sm-9 line-width">
+                    <p class="form-control">{{datosCabecera?.nombre}}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 controlS-label text-left" for="textinput">CATEGORIA</label>
+                  <div class="col-sm-9 line-width">
+                    <p class="form-control">{{datosCabecera?.categoria}}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 controlS-label text-left" for="textinput">N Servicios</label>
+                  <div class="col-sm-9 line-width">
+                    <p class="form-control">{{datosCabecera?.nServ}}</p>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <div class="pull-right">
+                      <a *ngIf="datosCabecera" [routerLink]="['/main','escandallo','edit', datosCabecera?.id]" type="" class="btn btn-primary">Modify</a>
+                    </div>
+                  </div>
+                </div>
+
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class=" container-fluid">
+    <div class="row">
+      <div class="card-margin col-md-12">
+
+        <div class="card card-size">
+          <div class="col-md-12 form-margin ingForm-padding">
+
+            <form (ngSubmit)="handleSubmit()" class="form-horizontal" role="form">
+
+
+              <div class="form-group">
+                <label class="text-left col-sm-2 controlS-labelB" for="textinput">Articulo</label>
+                <div class="line-lengthS col-sm-4">
+                  <ng2-completer [(ngModel)]="searchArt" name="article" [datasource]="dataService" [minSearchLength]="2"></ng2-completer>
+                </div>
+                <label class="text-left col-sm-2 controlS-labelB" for="textinput">Peso</label>
+                <div class="line-lengthT col-sm-4">
+                  <input type="text" placeholder="" name="gr" class="form-control" [(ngModel)]="und">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <div class="pull-right">
+                    <button type="submit" class="btn btn-primary">Add Ingrediente</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+
+
+            <table class="wrapper-escandallo table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Code</th>
+                  <th scope="col">Articulo</th>
+                  <th scope="col">Precio Compra</th>
+                  <th scope="col">U Inv</th>
+                  <th scope="col">C.M.P</th>
+                  <th scope="col">U Fabr</th>
+                  <th scope="col">Peso Neto</th>
+                  <th scope="col">Aprov</th>
+                  <th scope="col">Peso Bruto</th>
+                  <th scope="col">C.M.P Total</th>
+                  <th scope="col">% Presencia</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tabla of datosTabla">
+                  <th scope="row">{{tabla.code}}</th>
+                  <td>{{tabla.nombre}}</td>
+                  <td>{{tabla.precioI}} €</td>
+                  <td>{{tabla.uInv}}</td>
+                  <td>{{tabla.precioI/1000}} €</td>
+                  <td>{{tabla.uFabr}}</td>
+                  <td>{{tabla.und}} {{tabla.uFabr}}</td>
+                  <td>{{tabla.aprob}}%</td>
+                  <td>{{tabla.und/(tabla.aprob/100) | number: '1.1-2' }} {{tabla.uFabr}}</td>
+                  <td>{{(tabla.precioI/1000)*(tabla.und/(tabla.aprob/100)) | number: '1.1-2'}} €</td>
+                  <td>{{(tabla.und/sumaTund)*100 | number: '1.0-0'}} %</td>
+                  <td><button (click)="onClickDeleteIng(tabla)" class="material-icons btn btn-size">delete_sweep</button></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" container-fluid">
+    <div class="row">
+      <div class="card-margin col-md-12">
+
+        <div class="card card-size">
+          <div class="col-md-12 form-margin ingForm-padding">
+
+            <div class="form-group">
+              <label class="col-sm-2 controlS-label text-left" for="textinput">Coste Total</label>
+              <div class="col-sm-9 line-width">
+                <p class="form-control">{{sumaCmpT | number: '1.1-2'}} €</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 controlS-label text-left" for="textinput">C.M.P</label>
+              <div class="col-sm-3 line-width">
+                <p class="form-control">{{sumaCmpT/datosCabecera?.nServ | number: '1.1-2'}} €</p>
+              </div>
+              <label class="col-sm-2 controlS-label text-left" for="textinput">% C.M.P</label>
+              <div class="col-sm-3 line-width">
+                <p class="form-control">{{((sumaCmpT/datosCabecera?.nServ)/(datosCabecera?.pvp/1.1))*100 | number: '1.1-2'}}%</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 controlS-label text-left" for="textinput">M.B.C</label>
+              <div class="col-sm-3 line-width">
+                <p class="form-control">{{(datosCabecera?.pvp/1.1)-(sumaCmpT/datosCabecera?.nServ) | number: '1.1-2'}} €</p>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 controlS-label text-left" for="textinput">% M.B.C</label>
+                <div class="col-sm-3 line-width">
+                  <p class="form-control">{{(((datosCabecera?.pvp/1.1)-(sumaCmpT/datosCabecera?.nServ))/(datosCabecera?.pvp/1.1))*100 | number: '1.1-2'}}%</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 controlS-label text-left" for="textinput">P. s/Iva</label>
+                <div class="col-sm-9 line-width">
+                  <p class="form-control">{{datosCabecera?.pvp/1.1 | number: '1.1-2'}} €</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 controlS-label text-left" for="textinput">P.V.P</label>
+                <div class="col-sm-9 line-width">
+                  <input *ngIf="datosCabecera != null"[(ngModel)]="datosCabecera.pvp" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 controlS-label text-left" for="textinput">Coeficiente</label>
+                <div class="col-sm-9 line-width">
+                  <p class="form-control">{{(((((datosCabecera?.pvp/1.1)-(sumaCmpT/datosCabecera?.nServ))/(datosCabecera?.pvp/1.1)))/(((sumaCmpT/datosCabecera?.nServ)/(datosCabecera?.pvp/1.1))))+1
+                    | number: '1.0-0' }}</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 controlS-label text-left" for="textinput">Ratio de Mejora</label>
+                <div class="col-sm-9 line-width">
+                  <p class="form-control">{{(((((datosCabecera?.pvp/1.1)-(sumaCmpT/datosCabecera?.nServ))/(datosCabecera?.pvp/1.1)))/(((sumaCmpT/datosCabecera?.nServ)/(datosCabecera?.pvp/1.1))))*100
+                    | number: '1.0-0' }} %</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <div class="pull-right">
+                    <button (click)="onClickMe()" class="btn btn-primary">FINISH</button>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

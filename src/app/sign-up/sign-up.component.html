@@ -1,0 +1,38 @@
+<section class="wholeForm">
+
+  <div class="columsForm signUpForm">
+    <div>
+      <h3>WELCOME BACK</h3>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="handleSubmit(form.value)">
+      <div class="formBox">
+        <input type="text" placeholder="INTRODUCE TU EMAIL" formControlName="email" class="form-control">
+        <div *ngIf="form.controls.email.errors && form.controls.email.touched" class="validator">EMAIL NO VALIDO</div>
+      </div>
+
+      <div class="formBox">
+        <input type="password" placeholder="INTRODUCE TU CONTRASEÑA" formControlName="password" class="form-control">
+        <div *ngIf="form.controls.password.errors && form.controls.password.touched" class="validator">CONTRASEÑA INCORRECTA</div>
+      </div>
+
+      <div *ngIf="error">{{error}}</div>
+
+      <div class="formBox">
+        <button type="submit" [disabled]="!form.valid" class="btn btn-simple btn-lg btn-block z-depth-2 ">Sign In</button>
+      </div>
+
+    </form>
+    <div class="splitter"></div>
+
+
+    <div class="infoForm">
+      <button [routerLink]="['/signUp']" class="btn-simple btn-lg">Create an Account</button>
+      <p>Don't have an account yet?</p>
+
+    </div>
+
+  </div>
+
+
+</section>

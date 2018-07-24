@@ -1,0 +1,56 @@
+<div class="background">
+  <section class="wholeForm">
+
+    <div class="columsForm infoForm">
+      <h1>Sign up</h1>
+      <h4>Please enter your details to sign up and be part of hospitality change</h4>
+      <p>Already an account?</p>
+      <button [routerLink]="['/signIn']" class="btn-simple btn-lg">Sign in</button>
+    </div>
+    <div class="columsForm signUpForm">
+      <div>
+        <h3>REGISTRATE</h3>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="handleSubmit(form.value)">
+        <div class="formBox">
+          <input type="text" placeholder="nombre" formControlName="nombre" class="form-control">
+          <div *ngIf="form.controls.nombre.errors && form.controls.nombre.touched" class="validator">Nombre no valido</div>
+        </div>
+
+
+        <div class="formBox">
+          <input type="text" placeholder="apellidos" formControlName="apellidos" class="form-control">
+          <div *ngIf="form.controls.apellidos.errors && form.controls.apellidos.touched" class="validator">Apellido no valido </div>
+        </div>
+
+
+        <div class="formBox">
+          <input type="date" placeholder="fecha de nacimiento" formControlName="fechaNacimiento" class="form-control">
+          <div *ngIf="form.controls.fechaNacimiento.errors && form.controls.fechaNacimiento.touched" class="validator">Introduzca fecha valida</div>
+        </div>
+
+        <div class="splitter"></div>
+
+        <div class="formBox">
+            <input type="text" placeholder="email" formControlName="email" class="form-control">
+            <div *ngIf="form.controls.email.errors && form.controls.email.touched" class="validator">Email no valido</div>
+            <div *ngIf="error">{{error}}</div>
+          </div>
+    
+        <div class="formBox">
+          <input type="password" placeholder="ESCOGE UNA CONTRASEÑA" formControlName="password" class="form-control">
+          <div *ngIf="form.controls.password.errors && form.controls.password.touched" class="validator">May - min - Num -Sim min8caracters</div>
+        </div>
+
+
+        <div class="formBox">
+          <button type="submit" [disabled]="!form.valid" class="btn btn-simple btn-lg btn-block z-depth-2 ">Sign up</button>
+        </div>
+      </form>
+
+    </div>
+
+
+  </section>
+</div>

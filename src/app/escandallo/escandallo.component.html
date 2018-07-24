@@ -1,0 +1,109 @@
+<div class="main-panel">
+    <nav class="navbar navbar-transparent navbar-absolute">
+        <div class="container-fluid ">
+            <div class="navbar-header">
+                <a class="navbar-brand title-header"> ESCANDALLOS </a>
+            </div>
+            <div class="collapse navbar-collapse nav1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Export
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Import
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Print
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/main','escandallos-list']" type="button" class="btn btn-primary btn-header-top">
+                            Volver a Lista de Escandallos
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class=" container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card card-size">
+                        <div class="card-header card-header-size" data-background-color="purple">
+                            <h4 class="title">NUEVO ESCANDALLOS</h4>
+                            <p class="category">Rellena los siguientes campos</p>
+                        </div>
+                        <div class="col-md-12 form-margin ingForm-padding">
+                            <form [formGroup]="form" (ngSubmit)="handleSubmit(form.value)" class="form-horizontal" role="form">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 controlS-label text-left" for="textinput">CODIGO</label>
+                                    <div class="col-sm-9 line-width">
+                                        <input type="text" placeholder="" [value]="cabecera?.code" formControlName="code" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 controlS-label text-left" for="textinput">NOMBRE</label>
+                                    <div class="col-sm-9 line-width">
+                                        <input type="text" placeholder="" [value]="cabecera?.nombre" formControlName="nombre" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 controlS-label text-left" for="textinput">CATEGORIA</label>
+                                    <div class="col-sm-9 line-width">
+                                        <ng2-completer [(ngModel)]="searchCat" [ngModelOptions]="{standalone: true}" name="article" [datasource]="dataService" [minSearchLength]="1"></ng2-completer>
+
+                                        <!-- <input type="text" placeholder="" [value]="categoria?.categoria" formControlName="categoria" class="form-control"> -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 controlS-label text-left" for="textinput">N Servicios</label>
+                                    <div class="col-sm-9 line-width">
+                                        <input type="text" placeholder="" [value]="cabecera?.nServ" formControlName="nServ" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 controlS-label text-left" for="textinput">TAGS</label>
+                                    <button class="btn btn-default" (click)="tagSubmit($event)">+</button>
+                                    <!-- el ngModelOptions = [ngModelOptions]="{standalone: true}" se lo ponemos ya que esta dentro de un formulario y no queremos que afecte al funcionamiento de este -->
+                                    <input type="text" [(ngModel)]="tag" [ngModelOptions]="{standalone: true}">
+                                </div>
+
+                                <div class="displayTags form-group">
+                                    <!-- poner un click al que le paso el tag y lo elimino del array -->
+                                    <div class="tagBox" *ngFor="let tag of allTags">
+                                        <p>{{tag}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="pull-right">
+                                            <a [routerLink]="['/main','escandallos-list']" type="" class="btn btn-default">Cancel</a>
+                                            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

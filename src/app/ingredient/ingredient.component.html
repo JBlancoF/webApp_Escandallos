@@ -1,0 +1,133 @@
+<div class="main-panel">
+    <nav class="navbar navbar-transparent navbar-absolute">
+        <div class="container-fluid ">
+            <div class="navbar-header">
+                <a class="navbar-brand title-header"> INGREDIENTES </a>
+            </div>
+            <div class="collapse navbar-collapse nav1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Export
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Import
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Print
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/main','ingredients-list']" type="button" class="btn btn-primary btn-header-top">
+                            Volver a Ingredientes
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class=" container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="card card-size">
+                        <div class="card-header card-header-size" data-background-color="purple">
+                            <h4 class="title">NUEVO INGREDIENTE</h4>
+                            <p class="category">Rellena los siguientes campos</p>
+                        </div>
+                        <div class="col-md-12 form-margin ingForm-padding">
+                            <form [formGroup]="form" (ngSubmit)="handleSubmit(form.value)" class="form-horizontal" role="form">
+
+                                <div class="form-group">
+                                    <label class="text-left col-sm-2 controlS-label" for="textinput">CODE</label>
+                                    <div class="line-length col-sm-10">
+                                        <input type="text" placeholder="" [value]="ingrediente?.code" formControlName="code" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="text-left col-sm-2 controlS-label" for="textinput">NOMBRE</label>
+                                    <div class="line-length col-sm-10">
+                                        <input type="text" placeholder="" [value]="ingrediente?.nombre" formControlName="nombre" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-left col-sm-2 controlS-label" for="textinput">CATEGORIA</label>
+                                    <div class="line-length col-sm-10">
+                                        <ng2-completer [(ngModel)]="searchCat" [ngModelOptions]="{standalone: true}"  name="article" [datasource]="dataService" [minSearchLength]="1"></ng2-completer>
+
+                                        <!-- <input type="text" placeholder="" [value]="ingrediente?.categoria" formControlName="categoria" class="form-control"> -->
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-left col-sm-2 controlS-label" for="textinput">Un. Inventario</label>
+                                    <div class="line-lengthS col-sm-4">
+                                        <input type="text" placeholder="" [value]="ingrediente?.uInv" formControlName="uInv" class="form-control">
+                                    </div>
+
+                                    <label class="text-left col-sm-2 controlS-label" for="textinput">PRECIO</label>
+                                    <div class="line-lengthT col-sm-4">
+                                        <input type="text" placeholder="" [value]="ingrediente?.precioI" formControlName="precioI" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-left col-sm-2 controlS-label" for="textinput">Un. Fabricacion</label>
+                                    <div class="line-lengthS col-sm-4">
+                                        <input type="text" placeholder="" [value]="ingrediente?.uFabr" formControlName="uFabr" class="form-control">
+                                    </div>
+
+                                    <label class="text-left col-sm-2 controlS-label" for="textinput">COSTE</label>
+                                    <div class="line-lengthT col-sm-4">
+                                        <input type="text" placeholder="" [value]="ingrediente?.costeF" formControlName="costeF" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="text-left col-sm-2 controlS-label" for="textinput">MERMA</label>
+                                    <div class="line-length col-sm-10">
+                                        <input type="text" placeholder="" [value]="ingrediente?.aprob" formControlName="aprob" class="form-control">
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="pull-right">
+                                            <a [routerLink]="['/main','ingredients-list']" type="" class="btn btn-default">Cancel</a>
+                                            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-size card-height">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

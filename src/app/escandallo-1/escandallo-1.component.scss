@@ -1,0 +1,61 @@
+///header//
+.card-height {
+    height: 620px;
+}
+
+
+.text-left {
+    text-align: left;
+} 
+
+.card-header-size {
+    width: 400px;
+}
+
+.form-margin{
+  padding: 10px 60px;
+}
+
+.controlS-label{
+  display: block;
+  margin: 8px 15px 0 0;
+}
+
+.controlS-labelB{
+  display: block;
+  padding-left: 10px !important;
+  margin: 8px 15px 0 0;
+  width: 70px;
+}
+
+.line-width{
+  margin-right: 20px;
+}
+
+//tabla
+
+.wrapper-escandallo{
+  margin: 40px 0;
+  thead{
+    font-size: 10px;
+    background: rgba(0, 0, 0, 0.411);
+    th{
+      font-weight: 700;
+    }
+  }
+}
+
+.btn-margin{
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.card-margin{
+  padding: 0 30px;
+}
+
+.btn-size{
+  padding: 6px;
+  margin: 0;
+  font-size: 17px;
+}

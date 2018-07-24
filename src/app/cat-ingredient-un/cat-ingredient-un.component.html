@@ -1,0 +1,97 @@
+<div class="main-panel">
+    <nav class="navbar navbar-transparent navbar-absolute">
+        <div class="container-fluid ">
+            <div class="navbar-header">
+                <a class="navbar-brand title-header" href="#"> CATEGORIA INGREDIENTES </a>
+            </div>
+            <div class="collapse navbar-collapse nav1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Export
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Import
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Print
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/main','ingredients','category']" type="button" class="btn btn-primary btn-header-top">
+                            Volver a Categorias
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class=" container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card card-size">
+                        <div class="card-header card-header-size" data-background-color="purple">
+                            <h4 class="title">NUEVA CATEGORIA</h4>
+                            <p class="category">Rellena los siguientes campos</p>
+                        </div>
+                        <div class="col-md-12 form-margin">
+                            <form [formGroup]="form" (ngSubmit)="handleSubmit(form.value)" class="form-horizontal" role="form">
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-1 form-check-label" for="exampleRadios1">COMIDA</label>
+                                    <input class="col-sm-5 form-check-input" [checked]="categoria?.tipo === 'comida'" type="radio" formControlName="tipo" id="exampleRadios1" value="comida" checked>
+
+                                    <label class="col-sm-1 form-check-label" for="exampleRadios1">BEBIDA</label>
+                                    <input class="col-sm-5 form-check-input" [checked]="categoria?.tipo === 'bebida'" type="radio" formControlName="tipo" id="exampleRadios1" value="bebida" checked>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-1 controlS-label" for="textinput">NOMBRE</label>
+                                    <div class="col-sm-11">
+                                        <input type="text" placeholder="" [value]="categoria?.nombre" formControlName="nombre" class="form-control">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-1 controlS-label" for="textinput">IMAGEN</label>
+                                    <div class="col-sm-11">
+                                        <input name="myFile" placeholder="xxx" formControlName="img" type="file" class="form-control">pp
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="pull-right">
+                                            <a [routerLink]="['/main','ingredients','category']" type="" class="btn btn-default">Cancel</a>
+                                            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

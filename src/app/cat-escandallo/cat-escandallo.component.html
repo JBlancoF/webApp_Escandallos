@@ -1,0 +1,155 @@
+<div class="main-panel">
+    <nav class="navbar navbar-transparent navbar-absolute">
+
+        <!-- columna superior del header -->
+        <div class="container-fluid ">
+            <div class="navbar-header">
+                <a class="navbar-brand title-header" href="#"> CATEGORIA ESCANDALLOS </a>
+            </div>
+            <div class="collapse navbar-collapse nav1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Export
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Import
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn-listing-up">
+                            Print
+                            <span class="caret"></span>
+                        </button>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/main','escandallos','category','new']" type="button" class="btn btn-primary btn-header-top">
+                            Nueva Categoria
+                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- columna inferior del header -->
+        <div class="container-fluid">
+            <div class="navbar-header nav2">
+                <ul class="nav navbar-nav navbar-right marginLb">
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn-listing  ml-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Categorias
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn-listing ml-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Tags
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn-listing ml-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <img src="../../assets/img/listing-columns-icon.png" width="19" height="15" alt="">
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- busqueda con boton lupa -->
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group  is-empty">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="material-input"></span>
+                    </div>
+                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
+                </form>
+
+
+
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class=" container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="purple">
+                            <h4 class="title">CATEGORIAS ESCANDALLOS</h4>
+                            <p class="category">Organiza tus escandallos en diferentes categorias</p>
+                        </div>
+                        <div class="card-content table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th class="imgT">Img</th>
+                                    <th class="tipeT">Tipo</th>
+                                    <th class="nombreT">Nombre</th>
+                                    <th class="editT"></th>
+                                    <th class="moreT"></th>
+
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let catEscan of listaCatEscandallos">
+                                        <td class="imgTD"><img src="{{catEscan.img}}" alt=""></td>
+                                        <td class="tipeTD">{{catEscan.tipo}}</td>
+                                        <td class="nombreTD">{{catEscan.nombre}}</td>
+                                        <td class="editTD">
+                                            <a  [routerLink]="['/main','escandallos','category','edit', catEscan.id]" class="button-tables">edit</a>
+                                        </td>
+                                        <td class="moreTD">
+                                            <div class="dropdown">
+                                                <button class="dots-table dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    ...
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a (click)="handleSubmit(catEscan)" class="dropdown-item">Delete</a>
+                                                        <a class="dropdown-item">Duplicate</a>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

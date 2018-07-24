@@ -1,1 +1,99 @@
 /* You can add global styles to this file, and also import other style files */
+
+.btn-header-top{
+    margin: 0 20px  !important;
+}
+
+.btn-listing {
+    border: 1px solid purple;
+    border-radius: 3px;
+    padding: 5px 20px;
+    background-color: transparent;
+    }
+
+.btn-listing-up{
+    border: 1px solid purple;
+    border-radius: 3px;
+    padding: 5px 20px;
+    background-color: transparent;
+    margin: 8px 0;
+}
+
+.title-header{
+    padding: 18px 20px !important;
+}
+
+.ml-1{
+    margin-left: 10px;
+  }
+  
+  .nav1{
+    border-bottom: 1px solid lightgray;
+    padding: 10px 20px;
+  }
+  
+  .nav2{
+    padding: 21px 20px;
+  }
+  
+  .marginLb{
+    margin: 10px 0 0 14px;
+  }
+
+
+
+
+// /Drop Downs
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 10px !important;
+//   display: none; 
+//   text-align: left; 
+//   list-style: none;
+//   background-clip: padding-box;
+}
+
+
+.dropdown-item {
+  display: block;
+  width: 100%; 
+  clear: both;
+  text-align: inherit; 
+  white-space: nowrap; 
+  background-color: transparent; 
+  border: 0; 
+  }
+
+
+
+//Tables Buttons
+
+.button-tables{
+    border-radius: 3px;
+    background: linear-gradient(60deg, #ab47bc, #8e24aa);
+    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+    border: none;
+    color: #ffffff;
+    font-size: 10px;
+    width: 38px;
+    height: 26px;
+    text-align: center;
+    line-height: 25px;  
+    display: block;  
+}
+
+.button-tables:hover{
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 14px 26px -12px rgba(156, 39, 176, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
+    color: white;
+}
+
+.dots-table{
+    border: none;
+    background: none;
+    color: #ab47bc;
+    font-size: 20px;
+    font-weight: bold;
+}

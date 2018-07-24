@@ -1,0 +1,46 @@
+<div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
+    <!--
+    Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+    Tip 2: you can also add an image using data-image tag
+-->
+    <div class="logo">
+        <a  class="simple-text">
+            Pro HC-cost Beta 2.0
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li [ngClass]="{'active': sideBarColorsService.getActiveSection() === 'ingredientes' }">
+                <a [routerLink]="['/main','ingredients-list']">
+                    <i class="material-icons">shopping_basket</i>
+                    <p>Ingredientes</p>
+                </a>
+            </li>
+            <li [ngClass]="{'active': sideBarColorsService.getActiveSection() === 'catIng' }">
+                <a [routerLink]="['/main','ingredients','category']">
+                    <i class="material-icons">calendar_view_day</i>
+                    <p>Categorias Ingredientes</p>
+                </a>
+            </li>
+            <li [ngClass]="{'active': sideBarColorsService.getActiveSection() === 'escandallos' }">
+                <a [routerLink]="['/main','escandallos-list']">
+                    <i class="material-icons">vertical_split</i>
+                    <p>Escandallos</p>
+                </a>
+            </li>
+            <li [ngClass]="{'active': sideBarColorsService.getActiveSection() === 'catEsc' }">
+                <a [routerLink]="['/main','escandallos','category']">
+                    <i class="material-icons">calendar_view_day</i>
+                    <p>Categoria escandallos</p>
+                </a>
+            </li>
+            <li class="active-pro">
+                <a (click)="handleSubmit()">
+                    <i class="material-icons">exit_to_app</i>
+                    <p>Sign Out</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
